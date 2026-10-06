@@ -129,6 +129,16 @@ PhilosophyPod is a handheld voice device for Inquiry Chat, built on an ESP32 boa
 
 *How a PhilosophyPod looks depends on the enclosure you give the ESP32 board. Left: a wooden enclosure with a speaker above the screen, playing the boot animation. Right: a blue case, showing the equilibrium bar.*
 
+You are not limited to the board in the photographs. You can use this repository to turn almost any ESP32 device with a screen, a microphone and a speaker into a PhilosophyPod. The firmware is a modified copy of [xiaozhi-esp32](https://github.com/78/xiaozhi-esp32), which comes with build configurations for well over a hundred ESP32 boards under `PhilosophyPod/xiaozhi-esp32/main/boards/`, and Inquiry Chat speaks that firmware's own WebSocket protocol, so the server needs no changes for a different board. Build the firmware for your board in place of the Waveshare ESP32-S3-Touch-LCD-3.49 and point it at your computer.
+
+Three things were written for the Waveshare board and need adapting for another one:
+
+- The PhilosophyPod display: the boot animation, the equilibrium bar and the rotating map of questions. Without it, a board shows the firmware's standard screen.
+- The hold-to-talk buttons.
+- Setup over USB, which uses the USB port built into ESP32-S3 and similar chips.
+
+The Waveshare board is the only one that has been built and tested with this repository.
+
 On macOS, the launcher notices a device plugged in by USB and offers to set it up for your network before starting the server. If no device is plugged in, it starts as usual. Setting a device up also gives it a secret token, saved in `env` as `DEVICE_TOKEN`. From then on the server listens on the network for the device, and refuses voice devices that do not have the token; browsers on the network are still refused unless `ALLOW_NETWORK_ACCESS` is on.
 
 For a device, install `pip install -r requirements-device.txt`, plus the system Opus audio library and `ffmpeg` (on macOS: `brew install opus ffmpeg`). These are optional: the web app starts without them, and unavailable device audio is reported at startup. If device setup is selected in a fresh web-only installation, the launcher shows the installation commands and starts the web app; launch again after installing the device dependencies. Section 16 of `CONVERSATION_LOGIC.md` describes how the device connects.
