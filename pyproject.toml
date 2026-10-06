@@ -10,7 +10,7 @@ dependencies = [
     "python-multipart==0.0.32",
     "httpx==0.28.1",
     "python-dotenv==1.2.2",
-    "websockets==16.0",
+    "websockets==16.1.1",
 ]
 
 [project.optional-dependencies]
