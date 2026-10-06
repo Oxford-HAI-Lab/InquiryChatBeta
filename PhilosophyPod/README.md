@@ -2,6 +2,10 @@
 
 A handheld voice device for Inquiry Chat. You speak to it, and it speaks back, continuing your most recent Inquiry Chat conversation. Its screen shows your progress toward erotetic equilibrium.
 
+![Two PhilosophyPod devices on a wooden table. Left: a wooden enclosure with a speaker mounted above the screen, which shows the boot animation. Right: a blue case, its screen showing the erotetic equilibrium bar at 65%](../docs/device.png)
+
+*How a PhilosophyPod looks depends on the enclosure you give the ESP32 board. Left: a wooden enclosure with a speaker above the screen, playing the boot animation. Right: a blue case, showing the equilibrium bar.*
+
 It runs on a Waveshare ESP32-S3-Touch-LCD-3.49 board, using a modified copy of the open-source [xiaozhi-esp32](https://github.com/78/xiaozhi-esp32) firmware.
 
 This page assumes Inquiry Chat itself is set up and running; see `../README.md`. Settings named here (`DEVICE_TOKEN`, `ALLOW_NETWORK_ACCESS`) live in the `env` file described in `../env.example`, and section 16 of `../CONVERSATION_LOGIC.md` describes how the device and the server talk.

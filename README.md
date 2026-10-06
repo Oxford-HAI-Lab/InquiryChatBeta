@@ -119,11 +119,25 @@ python3 skills/generate-inquiry-shard/check_shard.py "Shards/<folder>/<shard>.js
 | `Launch_Inquiry_Chat.command` | macOS launcher |
 | `PhilosophyPod/` | The optional voice device: firmware, bridge server and its own README |
 | `LICENSE`, `CITATION.cff` | License and citation details |
-| `docs/` | Interface screenshots, asset provenance, dependency and release guides |
+| `docs/` | Interface screenshots, a photograph of the voice device, asset provenance, dependency and release guides |
 
 ## Optional: voice device
 
 PhilosophyPod is a handheld voice device for Inquiry Chat, built on an ESP32 board. It continues your most recent conversation by voice and shows your progress on its screen. The firmware, a bridge server and setup instructions are in the `PhilosophyPod/` folder; start with `PhilosophyPod/README.md`.
+
+![Two PhilosophyPod devices on a wooden table. Left: a wooden enclosure with a speaker mounted above the screen, which shows the boot animation. Right: a blue case, its screen showing the erotetic equilibrium bar at 65%](docs/device.png)
+
+*How a PhilosophyPod looks depends on the enclosure you give the ESP32 board. Left: a wooden enclosure with a speaker above the screen, playing the boot animation. Right: a blue case, showing the equilibrium bar.*
+
+You are not limited to the board in the photographs. You can use this repository to turn almost any ESP32 device with a screen, a microphone and a speaker into a PhilosophyPod. The firmware is a modified copy of [xiaozhi-esp32](https://github.com/78/xiaozhi-esp32), which comes with build configurations for well over a hundred ESP32 boards under `PhilosophyPod/xiaozhi-esp32/main/boards/`, and Inquiry Chat speaks that firmware's own WebSocket protocol, so the server needs no changes for a different board. Build the firmware for your board in place of the Waveshare ESP32-S3-Touch-LCD-3.49 and point it at your computer.
+
+Three things were written for the Waveshare board and need adapting for another one:
+
+- The PhilosophyPod display: the boot animation, the equilibrium bar and the rotating map of questions. Without it, a board shows the firmware's standard screen.
+- The hold-to-talk buttons.
+- Setup over USB, which uses the USB port built into ESP32-S3 and similar chips.
+
+The Waveshare board is the only one that has been built and tested with this repository.
 
 On macOS, the launcher notices a device plugged in by USB and offers to set it up for your network before starting the server. If no device is plugged in, it starts as usual. Setting a device up also gives it a secret token, saved in `env` as `DEVICE_TOKEN`. From then on the server listens on the network for the device, and refuses voice devices that do not have the token; browsers on the network are still refused unless `ALLOW_NETWORK_ACCESS` is on.
 
