@@ -119,11 +119,15 @@ python3 skills/generate-inquiry-shard/check_shard.py "Shards/<folder>/<shard>.js
 | `Launch_Inquiry_Chat.command` | macOS launcher |
 | `PhilosophyPod/` | The optional voice device: firmware, bridge server and its own README |
 | `LICENSE`, `CITATION.cff` | License and citation details |
-| `docs/` | Interface screenshots, asset provenance, dependency and release guides |
+| `docs/` | Interface screenshots, a photograph of the voice device, asset provenance, dependency and release guides |
 
 ## Optional: voice device
 
 PhilosophyPod is a handheld voice device for Inquiry Chat, built on an ESP32 board. It continues your most recent conversation by voice and shows your progress on its screen. The firmware, a bridge server and setup instructions are in the `PhilosophyPod/` folder; start with `PhilosophyPod/README.md`.
+
+![Two PhilosophyPod devices on a wooden table. Left: a wooden enclosure with a speaker mounted above the screen, which shows the boot animation. Right: a blue case, its screen showing the erotetic equilibrium bar at 65%](docs/device.png)
+
+*How a PhilosophyPod looks depends on the enclosure you give the ESP32 board. Left: a wooden enclosure with a speaker above the screen, playing the boot animation. Right: a blue case, showing the equilibrium bar.*
 
 On macOS, the launcher notices a device plugged in by USB and offers to set it up for your network before starting the server. If no device is plugged in, it starts as usual. Setting a device up also gives it a secret token, saved in `env` as `DEVICE_TOKEN`. From then on the server listens on the network for the device, and refuses voice devices that do not have the token; browsers on the network are still refused unless `ALLOW_NETWORK_ACCESS` is on.
 
