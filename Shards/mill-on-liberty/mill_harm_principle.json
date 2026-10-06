@@ -1,0 +1,84 @@
+{
+  "title": "Mill: The Harm Principle",
+  "source": "John Stuart Mill, On Liberty (1859), mainly Chapters 1, 4 and 5 (the harm principle and its applications). Edition not recorded.",
+  "source_brief": "John Stuart Mill's On Liberty, focusing on the harm principle",
+  "central": "When, if ever, is society justified in interfering with an individual's liberty?",
+  "nodes": [
+    {
+      "id": "CENTRAL",
+      "text": "When, if ever, is society justified in interfering with an individual's liberty?",
+      "parent": null,
+      "notes": "User-supplied guiding question. Mill frames this as 'the nature and limits of the power which can be legitimately exercised by society over the individual' (Ch. 1, para. 1). Root of the inquiry graph."
+    },
+    {
+      "id": "HARMPRINCIPLE",
+      "text": "Is preventing harm to others the only legitimate ground for interfering with liberty?",
+      "parent": "CENTRAL",
+      "notes": "Mill's central thesis: 'the sole end for which mankind are warranted, individually or collectively, in interfering with the liberty of action of any of their number, is self-protection. That the only purpose for which power can be rightfully exercised over any member of a civilised community, against his will, is to prevent harm to others.' (Ch. 1, para. 9)"
+    },
+    {
+      "id": "WHATHARM",
+      "text": "What counts as 'harm to others'?",
+      "parent": "HARMPRINCIPLE",
+      "notes": "The harm principle's application depends on defining harm. Mill distinguishes 'definite damage, or a definite risk of damage, either to an individual or to the public' from mere dislike, offence, or disapproval. But the boundary is contested throughout Ch. 4 and Ch. 5."
+    },
+    {
+      "id": "SELFREGARDING",
+      "text": "Is there really a class of actions that concern only the individual and not others?",
+      "parent": "HARMPRINCIPLE",
+      "notes": "Mill claims 'there is a sphere of action in which society, as distinguished from the individual, has, if any, only an indirect interest; comprehending all that portion of a person's life and conduct which affects only himself' (Ch. 1, para. 12). But critics argue almost all conduct affects others indirectly. Mill acknowledges: 'whatever affects himself, may affect others through himself' (Ch. 1, para. 12)."
+    },
+    {
+      "id": "OWNGOOD",
+      "text": "May society compel someone to act for their own good?",
+      "parent": "HARMPRINCIPLE",
+      "notes": "Mill explicitly denies this: 'His own good, either physical or moral, is not a sufficient warrant. He cannot rightfully be compelled to do or forbear because it will be better for him to do so, because it will make him happier, because, in the opinions of others, to do so would be wise, or even right.' (Ch. 1, para. 9). These are 'good reasons for remonstrating with him, or reasoning with him, or persuading him, or entreating him, but not for compelling him.'"
+    },
+    {
+      "id": "OBLIGATIONS",
+      "text": "What obligations does living in society impose on the individual?",
+      "parent": "CENTRAL",
+      "notes": "Mill concedes that 'every one who receives the protection of society owes a return for the benefit.' This consists in 'not injuring the interests of one another' and 'bearing his share... of the labours and sacrifices incurred for defending the society or its members from injury and molestation.' (Ch. 4, para. 3)"
+    },
+    {
+      "id": "SOCIALPRESSURE",
+      "text": "May society use disapproval and social pressure short of legal penalty?",
+      "parent": "OBLIGATIONS",
+      "notes": "Mill allows that for self-regarding faults, 'if he displeases us, we may express our distaste, and we may stand aloof from a person' but may not punish. For other-regarding conduct, society may use both opinion and law. The distinction between legitimate social pressure and illegitimate social tyranny is a recurring tension."
+    },
+    {
+      "id": "APPLICATIONS",
+      "text": "How does the harm principle apply to contested real-world cases?",
+      "parent": "HARMPRINCIPLE",
+      "notes": "Ch. 5 works through: trade regulation, sale of poisons, drunkenness, gambling, prostitution, Sabbath observance, polygamy, and more. Mill uses these cases to test and refine the principle. Some reveal genuine difficulties — e.g., is selling someone the means of self-harm equivalent to harming them?"
+    },
+    {
+      "id": "TRADE",
+      "text": "Is restricting trade a legitimate interference with liberty?",
+      "parent": "APPLICATIONS",
+      "notes": "Mill argues that 'trade is a social act' and 'the principle of individual liberty is not involved in the doctrine of Free Trade' in the same way as liberty of thought. Restrictions on trade may be justified to prevent harm (e.g., regulating poisons), but tariffs and protectionism are mostly ineffective rather than illegitimate in principle. (Ch. 5)"
+    },
+    {
+      "id": "UTILFOUND",
+      "text": "Is utility the proper foundation for the liberty principle, rather than abstract natural rights?",
+      "parent": "CENTRAL",
+      "notes": "Mill states: 'I forego any advantage which could be derived to my argument from the idea of abstract right, as a thing independent of utility. I regard utility as the ultimate appeal on all ethical questions; but it must be utility in the largest sense, grounded on the permanent interests of man as a progressive being.' (Ch. 1, para. 11)"
+    }
+  ],
+  "edges": [
+    { "from": "CENTRAL", "to": "HARMPRINCIPLE", "weight": 0.98 },
+    { "from": "CENTRAL", "to": "OBLIGATIONS", "weight": 0.75 },
+    { "from": "CENTRAL", "to": "UTILFOUND", "weight": 0.7 },
+    { "from": "HARMPRINCIPLE", "to": "WHATHARM", "weight": 0.95 },
+    { "from": "HARMPRINCIPLE", "to": "SELFREGARDING", "weight": 0.9 },
+    { "from": "HARMPRINCIPLE", "to": "OWNGOOD", "weight": 0.85 },
+    { "from": "HARMPRINCIPLE", "to": "APPLICATIONS", "weight": 0.8 },
+    { "from": "OBLIGATIONS", "to": "SOCIALPRESSURE", "weight": 0.85 },
+    { "from": "APPLICATIONS", "to": "TRADE", "weight": 0.75 },
+    { "from": "SELFREGARDING", "to": "OWNGOOD", "weight": 0.7, "_comment": "Cross-edge: Whether self-regarding actions exist determines the scope of the anti-paternalism argument" },
+    { "from": "SELFREGARDING", "to": "APPLICATIONS", "weight": 0.65, "_comment": "Cross-edge: Contested cases (drunkenness, gambling) test whether the self-regarding category holds" },
+    { "from": "UTILFOUND", "to": "HARMPRINCIPLE", "weight": 0.6, "_comment": "Cross-edge: The utilitarian grounding shapes how the harm principle is justified — not by natural rights but by permanent human interests" },
+    { "from": "WHATHARM", "to": "SOCIALPRESSURE", "weight": 0.55, "_comment": "Cross-edge: What counts as harm determines what society may respond to with social pressure vs. what it must tolerate" },
+    { "from": "OBLIGATIONS", "to": "SELFREGARDING", "weight": 0.5, "_comment": "Cross-edge: Social obligations create the boundary where self-regarding conduct ends and other-regarding conduct begins" }
+  ]
+}

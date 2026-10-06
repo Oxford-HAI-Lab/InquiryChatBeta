@@ -1,0 +1,8 @@
+# PhilosophyPod build settings, matching the working device build
+CONFIG_BOARD_TYPE_WAVESHARE_ESP32_S3_TOUCH_LCD_3_49=y
+CONFIG_LANGUAGE_EN_US=y
+CONFIG_USE_WECHAT_MESSAGE_STYLE=n
+# Echo cancellation off: the device is tap-to-speak
+CONFIG_USE_DEVICE_AEC=n
+# Console on the USB port, which is also used for setup over USB
+CONFIG_ESP_CONSOLE_USB_SERIAL_JTAG=y

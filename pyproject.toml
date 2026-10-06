@@ -1,0 +1,30 @@
+[project]
+name = "inquiry-chat"
+version = "1.0.0"
+description = "A local web application for inquiry-guided conversation"
+requires-python = ">=3.10,<3.15"
+dependencies = [
+    "fastapi==0.135.1",
+    "uvicorn[standard]==0.42.0",
+    "openai==2.29.0",
+    "python-multipart==0.0.32",
+    "httpx==0.28.1",
+    "python-dotenv==1.2.2",
+    "websockets==16.0",
+]
+
+[project.optional-dependencies]
+device = ["opuslib==3.0.1", "pyserial==3.5"]
+
+[dependency-groups]
+audit = ["pip-audit==2.10.1"]
+
+[tool.uv]
+package = false
+required-version = ">=0.9.7"
+default-groups = []
+
+[[tool.uv.index]]
+name = "pypi"
+url = "https://pypi.org/simple"
+default = true

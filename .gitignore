@@ -1,0 +1,38 @@
+# API keys and personal settings: never publish
+env
+.env
+
+# Saved chats
+sessions/
+
+# Python environment and caches
+.venv/
+.audit-venv/
+.audit-venv/
+.venv.old*/
+venv/
+__pycache__/
+*.pyc
+
+# Prepared release archives
+dist/
+
+# macOS
+.DS_Store
+
+# Personal Claude Code settings, at any level
+**/.claude/settings.local.json
+
+# Backups
+*.bak*
+
+# PhilosophyPod voice device
+# Your own server address; sdkconfig.board.example is the published template
+PhilosophyPod/xiaozhi-esp32/sdkconfig.board
+# Keep local firmware builds and flash archives for personal use; never publish
+PhilosophyPod/local-firmware/
+PhilosophyPod/xiaozhi-esp32/build/
+PhilosophyPod/xiaozhi-esp32/managed_components/
+
+# Local release checklist
+RELEASE_CHECKLIST.md

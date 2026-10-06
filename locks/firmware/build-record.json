@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "upstream_url": "https://github.com/78/xiaozhi-esp32",
+  "upstream_tag": "v2.5.0",
+  "upstream_commit": "ac6deed3d8e75348475364bf40ad953c6cd48054",
+  "esp_idf_version": "6.0.3",
+  "target": "esp32s3",
+  "component_count": 74,
+  "lock_sha256": "07c81fb4db3193f7b66aa9d985ba1d95237a059f3e950f6fd657ac5351ec1ae8",
+  "public_build_input_sha256": {
+    "PhilosophyPod/philosophypod-firmware-changes.patch": "930947aa00adf25c1937b15e961a0080f67fd76c7e17074d0c18dc4a0b5d4588",
+    "PhilosophyPod/xiaozhi-esp32/CMakeLists.txt": "d1801a8f45834dc360ea3608a10d6be184623f1115e1db4f0096f5c2358dffc9",
+    "PhilosophyPod/xiaozhi-esp32/main/CMakeLists.txt": "e73f34991f414bf66c0af6194193821377b8c22b4c84a74178cad12c94f22511",
+    "PhilosophyPod/xiaozhi-esp32/main/idf_component.yml": "7d57cb00b1978c426817c0bab4f1f772b8743e5b413c21f7cfaa2e89090b4ea5",
+    "PhilosophyPod/xiaozhi-esp32/sdkconfig.defaults": "c11d0c8d6ff4100947deb7b7f1b07682784f782ec3f47c2cbfaea9ef5b8ed0e9",
+    "PhilosophyPod/xiaozhi-esp32/sdkconfig.defaults.esp32s3": "ac95615571183538df58095bd5690c83005cf779ec08e51b9a236dd5c7eba0b9",
+    "PhilosophyPod/xiaozhi-esp32/sdkconfig.philosophypod": "2e801623c2b5d3b8ca90b904e5aa3a4d29bd9a6305d8120b1185973f414d7d57",
+    "PhilosophyPod/xiaozhi-esp32/sdkconfig.board.example": "134cd689abb927ebde10b16cc63b7f24e622649474e7bf2ba7046f941aeb0fb1"
+  },
+  "validation": "Resolution exported and public inputs checked; firmware was not rebuilt or flashed for this record.",
+  "firmware_artifact_sha256": null
+}

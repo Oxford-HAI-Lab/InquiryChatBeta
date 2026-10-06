@@ -1,0 +1,29 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite the article it is based on."
+title: "Inquiry Chat"
+type: software
+authors:
+  - family-names: Koralus
+    given-names: Philipp
+license: MIT
+version: "1.0.0"
+date-released: "2026-09-30"
+repository-code: "https://github.com/Oxford-HAI-Lab/InquiryChatBeta"
+preferred-citation:
+  type: article
+  title: "The philosophic turn for AI agents: replacing centralized digital rhetoric with decentralized truth-seeking"
+  authors:
+    - family-names: Koralus
+      given-names: Philipp
+  journal: "Mind & Society"
+  volume: 24
+  issue: 2
+  start: 563
+  end: 586
+  year: 2025
+  month: 12
+  doi: "10.1007/s11299-025-00326-z"
+  issn: "1860-1839"
+  publisher:
+    name: "Springer Science and Business Media LLC"
+  url: "https://link.springer.com/article/10.1007/s11299-025-00326-z"

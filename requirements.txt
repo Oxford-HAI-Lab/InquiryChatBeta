@@ -1,0 +1,3 @@
+# Generated resolution is maintained from pyproject.toml and uv.lock.
+--require-hashes
+-r locks/python-web.txt

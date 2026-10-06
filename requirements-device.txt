@@ -1,0 +1,3 @@
+# Includes the complete web application plus optional voice-device packages.
+--require-hashes
+-r locks/python-device.txt

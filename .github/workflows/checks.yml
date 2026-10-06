@@ -1,0 +1,86 @@
+name: Repository checks
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+  schedule:
+    - cron: "23 8 * * 1"
+
+permissions:
+  contents: read
+
+jobs:
+  tests:
+    name: Python ${{ matrix.python }} on ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+        python: ["3.10", "3.11", "3.12", "3.13", "3.14"]
+    env:
+      PYTHONDONTWRITEBYTECODE: "1"
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
+        with:
+          python-version: ${{ matrix.python }}
+      - uses: astral-sh/setup-uv@d0cc045d04ccac9d8b7881df0226f9e82c39688e # v6
+        with:
+          version: "0.9.7"
+          enable-cache: true
+      - name: Verify lock and hash exports without changing them
+        run: python tools/update_dependency_locks.py --check
+      - name: Install exact application and optional Python dependencies
+        run: uv sync --locked --no-default-groups --extra device --python '${{ matrix.python }}'
+      - name: Check installed dependency compatibility
+        run: uv pip check
+      - name: Run isolated backend and repository regressions
+        run: uv run --no-sync python -B -m unittest discover -s tests -v
+      - name: Verify public firmware resolution and build inputs
+        run: uv run --no-sync python tools/firmware_lock.py
+
+  dependency-audit:
+    name: Audit all locked Python variants
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
+        with:
+          python-version: "3.14"
+      - uses: astral-sh/setup-uv@d0cc045d04ccac9d8b7881df0226f9e82c39688e # v6
+        with:
+          version: "0.9.7"
+          enable-cache: true
+      - run: python tools/update_dependency_locks.py --check
+      - name: Install audit tooling separately from the application
+        run: uv sync --locked --only-group audit --python 3.14
+      - name: Query current advisories; fail on vulnerabilities or skipped packages
+        run: uv run --no-sync python tools/audit_dependencies.py --output-dir dist/dependency-audit
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        if: always()
+        with:
+          name: dependency-audit
+          path: dist/dependency-audit/
+          if-no-files-found: warn
+          retention-days: 30
+
+  release-candidate:
+    name: Curate and scan release candidate
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
+        with:
+          python-version: "3.14"
+      - run: python tools/prepare_release.py --output-dir dist/release

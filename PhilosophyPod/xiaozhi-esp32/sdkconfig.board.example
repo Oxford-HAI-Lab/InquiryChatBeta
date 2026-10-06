@@ -1,0 +1,5 @@
+# PhilosophyPod: default address of the server the device contacts on boot.
+# An address saved on the device by provision.py takes priority over this.
+# Set this to the address of the computer running the servers, on your local network.
+# Port 8000 = Inquiry Chat (the usual choice); port 8002 = the bridge server.
+CONFIG_OTA_URL="http://YOUR_COMPUTER_IP:8000/xiaozhi/ota/"
