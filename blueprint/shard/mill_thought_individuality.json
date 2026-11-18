@@ -1,0 +1,68 @@
+{
+  "title": "Mill: Freedom of Thought and Individuality",
+  "source": "John Stuart Mill, On Liberty (1859), mainly Chapters 1–3 (liberty of thought and discussion; individuality). Edition not recorded.",
+  "source_brief": "John Stuart Mill's On Liberty, focusing on freedom of thought and individuality",
+  "central": "When, if ever, is society justified in interfering with an individual's liberty?",
+  "nodes": [
+    {
+      "id": "CENTRAL",
+      "text": "When, if ever, is society justified in interfering with an individual's liberty?",
+      "parent": null,
+      "notes": "User-supplied guiding question. Mill frames this as 'the nature and limits of the power which can be legitimately exercised by society over the individual' (Ch. 1, para. 1). Root of the inquiry graph."
+    },
+    {
+      "id": "TYRANNY",
+      "text": "Can the majority itself become a tyrant over individuals?",
+      "parent": "CENTRAL",
+      "notes": "Mill argues that 'the tyranny of the majority' operates not just through government but through 'the tyranny of the prevailing opinion and feeling' which 'practises a social tyranny more formidable than many kinds of political oppression, since... it leaves fewer means of escape, penetrating much more deeply into the details of life, and enslaving the soul itself.' (Ch. 1, para. 5)"
+    },
+    {
+      "id": "FREETHOUGHT",
+      "text": "Why must liberty of thought and discussion be absolute?",
+      "parent": "CENTRAL",
+      "notes": "Mill's Ch. 2 argument rests on four grounds: the silenced opinion may be true (suppression assumes infallibility); even if false, it may contain partial truth; even if wholly true, unchallenged it becomes 'dead dogma'; and its meaning risks being 'lost, or enfeebled' without contest. (Ch. 2, paras. 41–43)"
+    },
+    {
+      "id": "INFALLIBILITY",
+      "text": "Does silencing an opinion assume our own infallibility?",
+      "parent": "FREETHOUGHT",
+      "notes": "'All silencing of discussion is an assumption of infallibility.' (Ch. 2, para. 3). Mill argues this holds even when we feel certain: 'ages are no more infallible than individuals; every age having held many opinions which subsequent ages have deemed not only false but absurd' (Ch. 2, para. 4)."
+    },
+    {
+      "id": "DEADDOGMA",
+      "text": "Do beliefs become empty dogma if never challenged?",
+      "parent": "FREETHOUGHT",
+      "notes": "Mill argues that even true beliefs, if never contested, 'will, by most of those who receive it, be held in the manner of a prejudice, with little comprehension or feeling of its rational grounds' and 'the meaning of the doctrine itself will be in danger of being lost, or enfeebled' (Ch. 2, para. 43). He invokes the Socratic dialectics as a model for keeping belief alive."
+    },
+    {
+      "id": "INDIVIDUALITY",
+      "text": "Is individuality essential to human well-being?",
+      "parent": "CENTRAL",
+      "notes": "Mill's Ch. 3 argues that 'the free development of individuality is one of the leading essentials of well-being' (Ch. 3, para. 2). Not just instrumentally but intrinsically: 'Human nature is not a machine to be built after a model, and set to do exactly the work prescribed for it, but a tree, which requires to grow and develop itself on all sides' (Ch. 3, para. 4)."
+    },
+    {
+      "id": "EXPERIMENTS",
+      "text": "Does society benefit from diverse 'experiments of living'?",
+      "parent": "INDIVIDUALITY",
+      "notes": "Mill argues 'so is it that there should be different experiments of living; that free scope should be given to varieties of character, short of injury to others; and that the worth of different modes of life should be proved practically' (Ch. 3, para. 1). Eccentric individuals are 'instructive' to the conforming majority."
+    },
+    {
+      "id": "CONFORMITY",
+      "text": "Is social conformity a threat to individuality comparable to political tyranny?",
+      "parent": "INDIVIDUALITY",
+      "notes": "Mill warns that 'in our times, from the highest class of society down to the lowest, every one lives as under the eye of a hostile and dreaded censorship' (Ch. 3, para. 6). The result: 'their human capacities are withered and starved: they become incapable of any strong wishes or native pleasures' (Ch. 3, para. 6)."
+    }
+  ],
+  "edges": [
+    { "from": "CENTRAL", "to": "TYRANNY", "weight": 0.85 },
+    { "from": "CENTRAL", "to": "FREETHOUGHT", "weight": 0.9 },
+    { "from": "CENTRAL", "to": "INDIVIDUALITY", "weight": 0.85 },
+    { "from": "FREETHOUGHT", "to": "INFALLIBILITY", "weight": 0.9 },
+    { "from": "FREETHOUGHT", "to": "DEADDOGMA", "weight": 0.85 },
+    { "from": "INDIVIDUALITY", "to": "EXPERIMENTS", "weight": 0.85 },
+    { "from": "INDIVIDUALITY", "to": "CONFORMITY", "weight": 0.8 },
+    { "from": "TYRANNY", "to": "CONFORMITY", "weight": 0.7, "_comment": "Cross-edge: Social conformity is the mechanism through which majority tyranny operates in daily life" },
+    { "from": "TYRANNY", "to": "FREETHOUGHT", "weight": 0.65, "_comment": "Cross-edge: The danger of majority tyranny is a key reason why freedom of thought must be protected" },
+    { "from": "INDIVIDUALITY", "to": "FREETHOUGHT", "weight": 0.55, "_comment": "Cross-edge: Mill argues that the same reasons supporting liberty of thought extend to liberty of action (experiments of living)" }
+  ]
+}

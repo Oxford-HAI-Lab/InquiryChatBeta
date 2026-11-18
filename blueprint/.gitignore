@@ -1,0 +1,14 @@
+# The engine's own state under the projects root
+projects/.current
+projects/.token
+projects/.authority/
+projects/.audit/
+projects/settings.json
+projects/default/
+# Graphs built under another name (for another model server) stay on the machine that built them
+projects/inquirychat/graphs/*
+!projects/inquirychat/graphs/inquirychat.json
+# Scratch, server logs, caches, and the relay's files
+/runs/
+__pycache__/
+custom/relay/state/
