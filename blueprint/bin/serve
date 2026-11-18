@@ -1,0 +1,23 @@
+#!/bin/sh
+# bin/serve: run the Blueprint engine on this project's folders.
+# Starts the server with `gleam run` directly rather than run.sh, so that
+# starting this project never rebuilds the editor bundle in the shared engine
+# checkout (other servers run from it). Set BLUEPRINT_BUILD=1 to use run.sh.
+set -eu
+here=$(CDPATH= cd -- "$(dirname -- "$0")/.." && pwd -P)
+engine=${BLUEPRINT_ENGINE:-$here/../../blueprint-beta}
+test -f "$engine/run.sh" || { echo "not a Blueprint checkout: $engine" >&2; exit 1; }
+echo "engine $(git -C "$engine" rev-parse --short HEAD) ($(git -C "$engine" rev-parse --abbrev-ref HEAD))"
+echo "pinned $(sed -n 's/^Engine commit: *//p' "$here/README.md")"
+export BLUEPRINT_PROJECTS_DIR="$here/projects"
+export BLUEPRINT_CUSTOM_DIR="$here/custom"
+export PORT="${PORT:-3500}"
+# The original passes reasoning_effort "none"; this is the engine's equivalent.
+export BLUEPRINT_NO_THINK=1
+mkdir -p "$BLUEPRINT_PROJECTS_DIR/inquirychat/graphs" "$BLUEPRINT_PROJECTS_DIR/inquirychat/workspace" "$BLUEPRINT_CUSTOM_DIR"
+if ! test -s "$BLUEPRINT_PROJECTS_DIR/.authority/active"; then
+  "$engine/bin/blueprint-closure-key" init --projects-root "$BLUEPRINT_PROJECTS_DIR"
+fi
+if test "${BLUEPRINT_BUILD:-0}" = 1; then exec sh "$engine/run.sh"; fi
+cd "$engine/server"
+exec gleam run -t erlang
